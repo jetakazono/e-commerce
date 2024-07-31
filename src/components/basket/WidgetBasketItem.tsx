@@ -26,7 +26,7 @@ export default function WidgetBasketItem({
                     className="object-cover"
                 />
             </div>
-            <div className="flex-1 flex flex-col gap-4 p-5">
+            <div className="flex-1 flex flex-col gap-4 p-5 justify-center items-center md:items-start">
                 <span className="text-xl font-bold">{name}</span>
                 <span className="flex-1 text-sm text-zinc-400">
                     {description}
