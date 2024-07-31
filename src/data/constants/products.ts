@@ -26,7 +26,7 @@ const products: Product[] = [
         description:
             "Experience superior sound quality with these wireless Bluetooth headphones, featuring noise cancellation and long battery life.",
         imageURL:
-            "https://images.unsplash.com/photo-1511376777868-611b54f68947",
+            "https://images.unsplash.com/photo-1628202926206-c63a34b1618f",
     },
     {
         id: 4,
@@ -44,7 +44,7 @@ const products: Product[] = [
         description:
             "A reusable stainless steel water bottle that keeps your drinks cold or hot for hours.",
         imageURL:
-            "https://images.unsplash.com/photo-1528701800489-27a3abdbfb0a",
+            "https://images.unsplash.com/photo-1527814050087-3793815479db",
     },
     {
         id: 6,
@@ -53,7 +53,7 @@ const products: Product[] = [
         description:
             "A soft and comfortable t-shirt made from 100% organic cotton, available in various colors.",
         imageURL:
-            "https://images.unsplash.com/photo-1616515903851-dbd302e89b8b",
+            "https://images.unsplash.com/photo-1593032465174-8b04830d7b6e",
     },
     {
         id: 7,
@@ -61,7 +61,7 @@ const products: Product[] = [
         price: 99.99,
         description:
             "Control your home with your voice using this smart speaker, compatible with various smart home devices.",
-        imageURL: "https://images.unsplash.com/photo-1544977919-45923d35b6a6",
+        imageURL: "https://images.unsplash.com/photo-1547658719-da2b51169166",
     },
     {
         id: 8,
@@ -70,7 +70,7 @@ const products: Product[] = [
         description:
             "Relax in nature with this lightweight and portable camping hammock, easy to set up and comfortable.",
         imageURL:
-            "https://images.unsplash.com/photo-1510017803434-a89939842195",
+            "https://images.unsplash.com/photo-1570117322525-4ac43a7e5704",
     },
     {
         id: 9,
@@ -78,17 +78,7 @@ const products: Product[] = [
         price: 119.99,
         description:
             "Capture memories instantly with this retro-style Polaroid camera, perfect for any photography enthusiast.",
-        imageURL:
-            "https://images.unsplash.com/photo-1582079161705-097b91ded1c0",
-    },
-    {
-        id: 10,
-        name: "Leather-bound Journal",
-        price: 35.99,
-        description:
-            "A beautifully crafted leather-bound journal for jotting down your thoughts, ideas, or sketches.",
-        imageURL:
-            "https://images.unsplash.com/photo-1518976024611-419d6dc3edba",
+        imageURL: "https://images.unsplash.com/photo-1558888403-dea491ed5744",
     },
 ]
 

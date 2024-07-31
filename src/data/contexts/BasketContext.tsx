@@ -7,6 +7,7 @@ export interface BasketContextProps {
     items: BasketItem[]
     itemsQtd: number
     add: (item: Product) => void
+    remove: (item: Product) => void
 }
 
 export interface BasketProviderProps {
@@ -37,6 +38,19 @@ export function BasketProvider({ children }: BasketProviderProps) {
         })
     }
 
+    const removeFromBasket = (item: Product) => {
+        const newItems = items
+            .map((basketItem) => {
+                if (basketItem.product.id === item.id) {
+                    basketItem.quantity--
+                }
+                return basketItem
+            })
+            .filter((i) => i?.quantity > 0)
+
+        setItems(newItems)
+    }
+
     return (
         <BasketContext.Provider
             value={{
@@ -48,6 +62,7 @@ export function BasketProvider({ children }: BasketProviderProps) {
                     )
                 },
                 add: addToBasket,
+                remove: removeFromBasket,
             }}
         >
             {children}
