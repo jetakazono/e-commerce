@@ -1,5 +1,9 @@
-import products from "@/data/constants/products"
+import Page from "@/components/template/Page"
 
 export default function Home() {
-    return <main></main>
+    return (
+        <Page>
+            <div>Home</div>
+        </Page>
+    )
 }
