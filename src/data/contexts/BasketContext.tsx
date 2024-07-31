@@ -1,10 +1,12 @@
 "use client"
 import React, { createContext, useState } from "react"
+import BasketItem from "../model/BasketItem"
+import Product from "../model/Product"
 
 export interface BasketContextProps {
-    number: number
-    decrement: () => void
-    increment: () => void
+    items: BasketItem[]
+    itemsQtd: number
+    add: (item: Product) => void
 }
 
 export interface BasketProviderProps {
@@ -14,18 +16,38 @@ export interface BasketProviderProps {
 const BasketContext = createContext<BasketContextProps>({} as any)
 
 export function BasketProvider({ children }: BasketProviderProps) {
-    const [number, setNumber] = useState(0)
+    const [items, setItems] = useState<BasketItem[]>([])
+
+    const addToBasket = (item: Product) => {
+        setItems((prevItems) => {
+            const itemIndex = prevItems.findIndex(
+                (basketItem) => basketItem.product.id === item.id
+            )
+
+            if (itemIndex === -1) {
+                return [...prevItems, { product: item, quantity: 1 }]
+            } else {
+                const updatedItems = [...prevItems]
+                updatedItems[itemIndex] = {
+                    ...updatedItems[itemIndex],
+                    quantity: updatedItems[itemIndex].quantity + 1,
+                }
+                return updatedItems
+            }
+        })
+    }
 
     return (
         <BasketContext.Provider
             value={{
-                number,
-                decrement: () => {
-                    setNumber(number + 1)
+                items,
+                get itemsQtd() {
+                    return items.reduce(
+                        (total, item) => total + item.quantity,
+                        0
+                    )
                 },
-                increment: () => {
-                    setNumber(number - 1)
-                },
+                add: addToBasket,
             }}
         >
             {children}
