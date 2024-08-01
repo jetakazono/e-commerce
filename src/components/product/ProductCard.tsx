@@ -4,6 +4,7 @@ import Product from "@/data/model/Product"
 import Image from "next/image"
 
 import useBasket from "@/data/hooks/useBasket"
+import { useState } from "react"
 
 export interface ProductCardProps {
     product: Product
@@ -12,6 +13,7 @@ export interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
     const { name, imageURL, description, price } = product
     const { add } = useBasket()
+    const [btnText, setBtnText] = useState("Move to Basket")
 
     return (
         <div className="flex flex-col w-72 bg-zinc-900">
@@ -31,10 +33,17 @@ export default function ProductCard({ product }: ProductCardProps) {
                         £{price.toFixed(2)}
                     </span>
                     <button
-                        className="border rounded-full px-5 py-1 tex-xs"
-                        onClick={() => add(product)}
+                        className="border rounded-full px-5 py-1 tex-xs hover:bg-zinc-500"
+                        disabled={btnText === "In basket"}
+                        onClick={() => {
+                            setBtnText("In basket")
+                            setTimeout(() => {
+                                setBtnText("Move to Basket")
+                            }, 5000)
+                            add(product)
+                        }}
                     >
-                        Move to Basket
+                        {btnText}
                     </button>
                 </div>
             </div>

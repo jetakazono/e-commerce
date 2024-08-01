@@ -1,7 +1,8 @@
 "use client"
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 import BasketItem from "../model/BasketItem"
 import Product from "../model/Product"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 export interface BasketContextProps {
     items: BasketItem[]
@@ -17,25 +18,29 @@ export interface BasketProviderProps {
 const BasketContext = createContext<BasketContextProps>({} as any)
 
 export function BasketProvider({ children }: BasketProviderProps) {
+    const { get, set } = useLocalStorage()
     const [items, setItems] = useState<BasketItem[]>([])
 
-    const addToBasket = (item: Product) => {
-        setItems((prevItems) => {
-            const itemIndex = prevItems.findIndex(
-                (basketItem) => basketItem.product.id === item.id
-            )
+    useEffect(() => {
+        const basket = get("basket")
 
-            if (itemIndex === -1) {
-                return [...prevItems, { product: item, quantity: 1 }]
-            } else {
-                const updatedItems = [...prevItems]
-                updatedItems[itemIndex] = {
-                    ...updatedItems[itemIndex],
-                    quantity: updatedItems[itemIndex].quantity + 1,
-                }
-                return updatedItems
-            }
-        })
+        if (basket) {
+            setItems(basket)
+        }
+    }, [get])
+
+    const addToBasket = (item: Product) => {
+        const itemIndex = items.findIndex(
+            (basketItem) => basketItem.product.id === item.id
+        )
+
+        if (itemIndex === -1) {
+            updateItems([...items, { product: item, quantity: 1 }])
+        } else {
+            const newItems = [...items]
+            newItems[itemIndex].quantity++
+            updateItems(newItems)
+        }
     }
 
     const removeFromBasket = (item: Product) => {
@@ -48,7 +53,12 @@ export function BasketProvider({ children }: BasketProviderProps) {
             })
             .filter((i) => i?.quantity > 0)
 
+        updateItems(newItems)
+    }
+
+    const updateItems = (newItems: BasketItem[]) => {
         setItems(newItems)
+        set("basket", newItems)
     }
 
     return (

@@ -18,7 +18,7 @@ export default function WidgetBasketItem({
     const { name, imageURL, description, price } = item.product
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center gap-5 bg-zinc-900 rounded-md overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center gap-5 bg-zinc-900 rounded-md overflow-hidden py-5 md:py-0">
             <div className="relative w-28 h-28">
                 <Image
                     src={imageURL}
@@ -27,9 +27,9 @@ export default function WidgetBasketItem({
                     className="object-cover"
                 />
             </div>
-            <div className="flex-1 flex flex-col gap-4 p-5 justify-center items-center md:items-start">
+            <div className="flex flex-col justify-center flex-1 items-center md:items-start px-4">
                 <span className="text-xl font-bold">{name}</span>
-                <span className="flex-1 text-sm text-zinc-400">
+                <span className="flex-1 text-sm text-zinc-400 max-w-80 md:max-w-full">
                     {description}
                 </span>
                 <div className="flex items-center gap-2 mt-2 text-zinc-400 text-lg font-bold">
