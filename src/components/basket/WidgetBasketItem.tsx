@@ -2,6 +2,7 @@
 import Image from "next/image"
 import BasketItem from "@/data/model/BasketItem"
 import { IconMinus, IconPlus, IconX } from "@tabler/icons-react"
+import { TotalBasket } from "./TotalBasket"
 
 export interface WidgetBasketItemProps {
     item: BasketItem

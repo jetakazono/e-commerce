@@ -34,7 +34,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                         className="border rounded-full px-5 py-1 tex-xs"
                         onClick={() => add(product)}
                     >
-                        Add to basket
+                        Move to Basket
                     </button>
                 </div>
             </div>
