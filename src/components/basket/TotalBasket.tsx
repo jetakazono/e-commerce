@@ -18,7 +18,7 @@ export const TotalBasket = ({ items }: TotalBasketProp) => {
                     £ {total.toFixed(2)}
                 </span>
             </div>
-            <button className="text-lime-300 border border-orange-400 px-2 md:px-4 py-2 rounded-md bg-orange-600/20">
+            <button className="text-lime-300 border border-orange-400 px-2 md:px-4 py-2 rounded-md bg-orange-600/20 hover:border-transparent transition-all ease-in-out hover:scale-105">
                 Proceed to checkout
             </button>
         </div>

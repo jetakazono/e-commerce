@@ -16,13 +16,13 @@ export default function ProductCard({ product }: ProductCardProps) {
     const [btnText, setBtnText] = useState("Move to Basket")
 
     return (
-        <div className="flex flex-col w-72 bg-zinc-900">
-            <div className="relative w-72 h-52">
+        <div className="flex flex-col bg-zinc-900 w-full ">
+            <div className="relative w-full h-52">
                 <Image
                     src={imageURL}
                     alt={name}
                     fill
-                    className="object-cover"
+                    className="object-cover hover:brightness-50 transition-all ease-in-out"
                 />
             </div>
             <div className="flex-1 flex flex-col gap-4 p-5">
@@ -33,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                         £{price.toFixed(2)}
                     </span>
                     <button
-                        className="border rounded-full px-5 py-1 tex-xs hover:bg-zinc-500"
+                        className="border rounded-full px-5 py-1 tex-xs hover:bg-zinc-500 hover:border-transparent"
                         disabled={btnText === "In basket"}
                         onClick={() => {
                             setBtnText("In basket")

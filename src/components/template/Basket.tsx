@@ -13,7 +13,11 @@ export default function Basket() {
                 <span className="absolute -right-2.5 -top-2.5 rounded-full size-5 bg-orange-500 text-center text-xs flex justify-center items-center">
                     {itemsQtd}
                 </span>
-                <IconShoppingCart size={32} stroke={1} className="-mt-2" />
+                <IconShoppingCart
+                    size={32}
+                    stroke={1}
+                    className="-mt-2 hover:text-orange-700"
+                />
             </div>
         </Link>
     )
