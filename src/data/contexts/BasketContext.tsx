@@ -1,4 +1,5 @@
 "use client"
+
 import React, { createContext, useEffect, useState } from "react"
 import BasketItem from "../model/BasketItem"
 import Product from "../model/Product"
@@ -9,6 +10,7 @@ export interface BasketContextProps {
     itemsQtd: number
     add: (item: Product) => void
     remove: (item: Product) => void
+    clean: () => void
 }
 
 export interface BasketProviderProps {
@@ -56,6 +58,10 @@ export function BasketProvider({ children }: BasketProviderProps) {
         updateItems(newItems)
     }
 
+    const cleanBasket = () => {
+        updateItems([])
+    }
+
     const updateItems = (newItems: BasketItem[]) => {
         setItems(newItems)
         set("basket", newItems)
@@ -73,6 +79,7 @@ export function BasketProvider({ children }: BasketProviderProps) {
                 },
                 add: addToBasket,
                 remove: removeFromBasket,
+                clean: cleanBasket,
             }}
         >
             {children}
